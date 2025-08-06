@@ -1,0 +1,57 @@
+<article>
+
+    <section class="markdown-body">
+        <header>
+            {% unless page.breadcrumbs == false %}
+                {% include breadcrumbs.html %}
+            {% endunless %}
+
+            <a href="{{ page.url | remove: "index" | remove: ".html" }}"><h1>{{ page.title }}{% if page.available %}
+                {% include badge in=page.available %}
+            {% elsif page.version %}
+                {% include badge v=page.version %}
+            {% elsif page.premium %}
+                {% include badge premium=true %}
+            {% endif %}</h1></a>
+            <hr>
+        </header>
+
+        {% include draft.html %}
+
+        <div class="page-content">
+            {{ content }}
+        </div>
+
+        {% if page.related %}
+            {% include related %}
+        {% elsif page.next_reading %}
+            {% include next title=page.next_reading_title ol=page.next_reading_ol %}
+        {% endif %}
+
+        <footer>
+
+            {% include pdf.html %}
+            
+            {% unless page.no_date %}
+                {% if site.data.commit_dates[page.path] or page.modified or page.date %}
+                    <div class="last-update">
+                        {% if site.github_url %}
+                            <a href="{{ site.github_url }}/blob/main{{ site.collections_dir }}/{{ page.path }}" title="View file history on Github" rel="nofollow" target="_blank"><span class="icon icon-github"></span></a>
+                        {% endif %}
+
+                        Last update: 
+                        {% if site.data.commit_dates[page.path] %}
+                            {{ site.data.commit_dates[page.path] | date: "%b %d, %Y" }}
+                        {% elsif page.modified %}
+                            {{ page.modified | date: "%b %d, %Y" }}
+                        {% else %}
+                            {{ page.date | date: "%b %d, %Y" }}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endunless %}
+        </footer>
+    </section>
+    
+    {% include page-toc.html %}
+</article>

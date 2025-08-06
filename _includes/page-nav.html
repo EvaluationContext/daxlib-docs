@@ -1,0 +1,19 @@
+<nav class="main-nav">
+    <ul>
+        <li class="l0{% if page.url == "/index" or page.url == "/" %} current{% endif %}"><a href="/" class="tree-link">{{ site.nav_root_title }}</a></li>
+        {% capture nav_html %}{% include_cached nav.html pages=site.mydocs %}{% endcapture %}
+
+        {% assign current_class = "url_" | append: page.url | replace: "/index", "/" %}
+        {% assign nav_html = nav_html | replace: current_class, "current" %}
+
+        {% assign expanded_class = "url_" %}
+        {% assign page_url_parts = page.url | split: "/" %}
+        {% for part in page_url_parts %}
+            {% assign expanded_class = expanded_class | append: part | append: "/" %}
+            {% assign replace_expanded_class = expanded_class | append: '"' %}
+            {% assign nav_html = nav_html | replace: replace_expanded_class, 'expanded"' %}
+        {% endfor %}
+
+        {{ nav_html }}
+    </ul>
+</nav>

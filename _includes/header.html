@@ -1,0 +1,28 @@
+<header class="main {% if page.nosearch or site.search == false %}nosearch{% endif %}">
+    <div class="logo">
+        <a href="/"><img src="/assets/images/logo.svg" class="light"><img src="/assets/images/logo-dark.svg" class="dark"></a>
+    </div>
+
+    <div class="title">{{ site.nav_root_title }}</div>
+
+    {% if site.search %}
+    <div class="search">
+        <div class="search-results" hidden></div>
+        <div class="icon-search"></div>
+        <input type="search" placeholder="Search">
+    </div>
+    {% endif %}
+
+    <div class="controls">
+
+        <div class="change-theme ctrl solo icon-theme-system" title="Change Theme"></div>
+
+        {% if site.github_url %}
+        <a href="{{ site.github_url }}/blob/main{{ site.collections_dir }}/{{ page.path }}" class="gotogithub ctrl solo icon-github" title="Go to GitHub"></a>
+        {% endif %}
+
+        {% if site.header_link_url %}
+        <a href="{{ site.header_link_url }}" class="gotoapp ctrl border solo" target="_blank">{{ site.header_link_title }}</a>
+        {% endif %}
+    </div>
+</header>

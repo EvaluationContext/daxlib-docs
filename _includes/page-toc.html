@@ -1,0 +1,21 @@
+{% unless page.toc == false %}
+    <!--googleoff: snippet-->
+    {% assign page_content = page.content | markdownify %}
+    {% assign page_toc_class = page.toc_class | default: site.toc_class %}
+    {% assign h_min = page.toc_h_min | default: site.toc_h_min | floor %}
+    {% assign h_max = page.toc_h_max | default: site.toc_h_max | floor %}
+    {% capture jekyll_toc %}{% include toc.html html=page_content h_max=h_max h_min=h_min item_class=page.toc_class %}{% endcapture %}
+    {% unless jekyll_toc == empty %}
+        <div class="toc">
+            <div class="toc-content">
+                <div class="toc-title note">{{ site.toc_title }}</div>
+                {{ jekyll_toc }}
+
+                {% if page.pdf == true or site.pdf == true %}
+                    <a href="#" class="gen-pdf icon-download">Download PDF</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endunless %}
+    <!--googleon: snippet-->
+{% endunless %}

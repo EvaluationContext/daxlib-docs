@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if page.noindex or page.redirect %}<meta name="robots" content="noindex">{% endif %}
+    {% if page.redirect %}<meta http-equiv="refresh" content="0; URL={{page.redirect}}" />{% endif %}
+    <title>{% if page.error %}{{ page.error}}{% else %}{{ page.title }}{% endif %}{% unless page.title == site.title %} - {{ site.title }}{% endunless %}</title>
+    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+    <link rel="shortcut icon" href="/assets/images/icon.png" sizes="228x228" media="(prefers-color-scheme: light)">
+    <link rel="shortcut icon" href="/assets/images/icon-dark.png" sizes="228x228" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" href="/assets/images/icon.png">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <script src="/assets/scripts/preload.min.js" defer></script>
+    <noscript>
+        <style>
+            .page.loading { visibility: inherit !important; }
+        </style>
+    </noscript>
+</head>
+<body class="page-{{ page.title | slugify }} {% if page.layout == 'home' %}front-site{% endif %} {% if page.body_class %}{{ page.body_class }}{% endif %}">
+
+    {% include header.html %}
+
+    {{ content }}
+    
+    {% include footer.html %}
+
+    <script src="/assets/scripts/fuse-index.js" defer></script>
+    <script src="/assets/scripts/fuse.min.js" defer></script>
+    <script src="/assets/scripts/search.min.js" defer></script>
+    <script src="/assets/scripts/prism.js"></script>
+    <script src="/assets/scripts/medium-zoom.min.js"></script>
+    <script src="/assets/scripts/split.min.js"></script>
+    <script src="/assets/scripts/main.min.js"></script>
+    <script src="/assets/scripts/my.js"></script>
+</body>
+</html>

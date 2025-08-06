@@ -1,0 +1,13 @@
+{% assign text_content = page.content | strip_newlines | strip %}
+{% unless page.nodraft %}
+    {% if page.draft or text_content contains "<todo" or text_content == empty %}
+        <!--googleoff: snippet-->
+        <div class="draft">
+            <div class="icon icon-pencil"></div>
+            <p>
+                <strong>DRAFT</strong> &nbsp;&nbsp; This page is not complete.
+            </p>
+        </div>
+        <!--googleon: snippet-->
+    {% endif %}
+{% endunless %}

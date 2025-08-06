@@ -1,0 +1,2 @@
+{% capture nav_html %}{% include nav pages=include.pages url="/" level=1 %}{% endcapture %}
+{{ nav_html | normalize_whitespace | strip }}
