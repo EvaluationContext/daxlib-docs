@@ -7,10 +7,10 @@ company: SQLBI Corp.
 web_url: https://daxlib.org
 
 # Privacy URL - It's added to the website footer
-privacy_url: 
+privacy_url: https://docs.daxlib.org/terms/policy
 
 # Terms URL - It's added to the website footer
-terms_url: 
+terms_url: https://docs.daxlib.org/terms
 
 # GitHub URL - Leave blank if you don't want to display links to GitHub repo
 github_url: 

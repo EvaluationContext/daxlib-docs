@@ -3,11 +3,21 @@
 // Light colors
 @mixin my-light-colors {
 
-    
+    --accent-color: #117865;
+    --accent-hover-color: #0b5547;
+    --accent-back-color: #DBEFEB;
+    --accent-hover-back-color: #bfd7d2;
+    --accent-border-color: #a4bfba;
+    --accent-contrast-color: #fff;
 }
 
 // Dark colors
 @mixin my-dark-colors {
 
-
+    --accent-color: #169b83;
+    --accent-hover-color: #117966;
+    --accent-back-color: #DBEFEB;
+    --accent-hover-back-color: #bfd7d2;
+    --accent-border-color: #a4bfba;
+    --accent-contrast-color: #fff;
 }
