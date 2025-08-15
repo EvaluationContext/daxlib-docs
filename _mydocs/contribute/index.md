@@ -1,6 +1,7 @@
 ---
 layout:         page
-title:          How to Contribute
+title:          Contribute to DAX Lib
+menu_title:     Contribute
 published:      true
 date:           2025-08-14
 modified:       2025-08-14
