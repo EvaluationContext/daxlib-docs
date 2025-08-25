@@ -13,7 +13,7 @@ order:          /user-guide/01
 
     a. Use **F1** to open the command palette
 
-    b. Use **Collapse All** to collapse all expanded code blocks and see only the function names.
+    b. Use **Fold All** to collapse all expanded code blocks and see only the function names.
 
     c. Use **Find** to look for a specific function name or description.
 
