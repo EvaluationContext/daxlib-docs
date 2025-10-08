@@ -57,7 +57,12 @@ When creating a new package for DAX Lib, it is important to follow specific conv
 
 5. **Reserved Keywords**:
 
-    - Do not use built-in DAX function names or other DAX reserved keywords in the package name (e.g. `MEASURE`, `FUNCTION`, `DEFINE`, `FILTER`)
+    - Do not use built-in DAX function names or other DAX reserved keywords in the package or function name (e.g. `MEASURE`, `FUNCTION`, `DEFINE`, `FILTER`, `DATE`)
+     
+      Example of invalid names:
+      - `Contoso.Filter` (uses reserved keyword `FILTER`)
+      - `Contoso.Conversion.Date` (uses reserved keyword `DATE`)
+
     - Do not use `Dax.` in the package name (`Dax` as a single word is a reserved keyword in function names). 
     - Do not use `DaxLib.` as a prefix for package name. This prefix is reserved for public open-source libraries of common use. Do not submit pull requests for new libraries using the `DaxLib.` prefix.
 
