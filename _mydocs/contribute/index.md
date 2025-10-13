@@ -10,18 +10,18 @@ next_reading:   true
 ---
 
 A DAX library is a collection of DAX user-defined functions (UDFs) authored in TMDL format, along with metadata (such as library name, version, author, etc.) and optional files like a README or an icon.
-Development takes place in the [DaxLib GitHub repository](https://github.com/sql-bi/daxlib/), where users can propose new libraries by submitting a pull request (PR).
+Development takes place in the [DaxLib GitHub repository](https://github.com/daxlib/daxlib/), where users can propose new libraries by submitting a pull request (PR).
 Once the pull request is approved, the library is automatically packaged as a ZIP file and published on [daxlib.org](https://daxlib.org/), making it available for browsing, installation, and use.
 
 You can follow these steps to add a new package to DAX Lib:
 
-1. **Fork** the GitHub repository [https://github.com/sql-bi/daxlib/](https://github.com/sql-bi/daxlib/fork).
+1. **Fork** the GitHub repository [https://github.com/daxlib/daxlib/](https://github.com/daxlib/daxlib/fork).
 
     If you are using Visual Studio Code, you can open the workspace file `packages.code-workspace` to quickly access and work on the packages.
 
 2. **Create a folder** for your package in `/packages/` and follow the [naming conventions](naming-conventions.md) for both the folder structure and name.
 
-    You can optionally use the [DaxLib.Sample](https://github.com/sql-bi/daxlib/tree/main/packages/d/daxlib.sample/0.1.6) package as a starting point: copy it, rename it according to your library’s name, and then update its contents to match your library.
+    You can optionally use the [DaxLib.Sample](https://github.com/daxlib/daxlib/tree/main/packages/d/daxlib.sample/0.1.6) package as a starting point: copy it, rename it according to your library’s name, and then update its contents to match your library.
 
     Example: for a library named `Contoso.Conversion` with version `1.0.0`, the folder structure should be:
 
@@ -31,7 +31,7 @@ You can follow these steps to add a new package to DAX Lib:
     
 3. **Create the manifest** in `manifest.daxlib` file.
     
-    The `manifest.daxlib` is a mandatory file contains the package properties in JSON format. You can see the [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package for an example and refer to the [JSON schema](https://github.com/sql-bi/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties.
+    The `manifest.daxlib` is a mandatory file contains the package properties in JSON format. You can see the [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package for an example and refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties.
 
     Example: for a library named `Contoso.Conversion` with version `1.0.0`, the manifest file should be located at:
 
