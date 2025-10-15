@@ -4,7 +4,7 @@ title:          Contribute to DAX Lib
 menu_title:     Contribute
 published:      true
 date:           2025-08-14
-modified:       2025-09-30
+modified:       2025-10-15
 order:          /02
 next_reading:   true
 ---
@@ -15,9 +15,13 @@ Once the pull request is approved, the library is automatically packaged as a ZI
 
 You can follow these steps to add a new package to DAX Lib:
 
-1. **Fork** the GitHub repository [https://github.com/daxlib/daxlib/](https://github.com/daxlib/daxlib/fork).
+1. **Fork** the DAX Lib repository [https://github.com/daxlib/daxlib/fork](https://github.com/daxlib/daxlib/fork).
+    
+    This creates a personal copy of the repository in your GitHub account.
+    
+    **Remarks**:
 
-    If you are using Visual Studio Code, you can open the workspace file `packages.code-workspace` to quickly access and work on the packages.
+    Do not make changes directly on the `main` branch. Always create a separate branch for each change you want to make. For example, `add-my-package-version-1.0.0`. This keeps your work isolated until it's reviewed and approved.
 
 2. **Create a folder** for your package in `/packages/` and follow the [naming conventions](naming-conventions.md) for both the folder structure and name.
 
@@ -42,8 +46,8 @@ You can follow these steps to add a new package to DAX Lib:
 4. **Create the DAX user-defined functions** in `lib/functions.tmdl` and follow the [naming conventions](naming-conventions.md) for the function names.
 
     The file `lib/functions.tmdl` is a mandatory file and contains the source code of the DAX user-defined functions using the TMDL syntax. For an example, see the [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package.
-
-    Remarks: 
+    
+    **Remarks**:
     - The `functions.tmdl` file should contain only the function definitions without the `createOrReplace` command.
     - Optional: add comments describing the function and its parameters to improve readability and usability, as suggested in the [DAX naming convention](https://docs.sqlbi.com/dax-style/dax-naming-conventions#comments).
     - Each UDF must include the mandatory annotations: `DAXLIB_PackageId` and `DAXLIB_PackageVersion`.
@@ -59,7 +63,7 @@ You can follow these steps to add a new package to DAX Lib:
 
     You can include a custom icon for your library by adding a PNG file inside the library's folder. 
     
-    Remarks: 
+    **Remarks**:
     - The icon file must be in PNG format (`.PNG`), with a maximum size of 100 KB.
 
     Example: for a library named `Contoso.Conversion` with version `1.0.0`, place the icon file at:
@@ -80,8 +84,8 @@ You can follow these steps to add a new package to DAX Lib:
 6. **(Optional) Add a README file**
 
     You can include a README file to provide documentation for your library. It can include general information about the library, usage instructions, examples, and any notes for users.
-
-    Remarks: 
+    
+    **Remarks**:
     - The file must be in Markdown format (`.MD`), with a maximum size of 100 KB.
     - For security reasons, only a limited set of Markdown features are supported, and external links may be restricted to trusted domains.
 
@@ -102,6 +106,6 @@ You can follow these steps to add a new package to DAX Lib:
 
 7. **Create a pull request** to publish the library on [daxlib.org](https://daxlib.org/)
 
-    a. The pull request must be approved manually by DaxLib owners/maintainers.
-
-    b. When the pull request is approved, the package is immediately published.
+    - Go [here](https://github.com/daxlib/daxlib/pull/new) to create a new pull request from your forked repository to the official DAX Lib repository.
+    - The pull request must be approved manually by DaxLib owners/maintainers.
+    - When the pull request is approved, the package is immediately published.
