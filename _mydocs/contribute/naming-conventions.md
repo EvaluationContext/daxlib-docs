@@ -21,8 +21,8 @@ When creating a new package for DAX Lib, it is important to follow specific conv
 
 2. **Package Folder Name** (⚠️ only for Small Libraries)
 
-      > This naming convention must be manually managed if you create a Small Library by forking the DAX Lib repository.
-      
+    > This naming convention only applies to Small Libraries created by forking the DAX Lib repository.
+    
     - The folder name for your package should be in lowercase letters and use dots to separate different levels of hierarchy.
 
       Example: for a package named `Contoso.Conversion`, the folder name should be:
@@ -69,7 +69,7 @@ When creating a new package for DAX Lib, it is important to follow specific conv
     - Do not use `DaxLib.` as a prefix for package name. This prefix is reserved for public open-source libraries of common use. Do not submit pull requests for new libraries using the `DaxLib.` prefix.
 
 6. **Folder Structure** (⚠️ only for Small Libraries)
-    > This naming convention must be manually managed if you create a Small Library by forking the DAX Lib repository.
+    > This naming convention only applies to Small Libraries created by forking the DAX Lib repository.
    - The **first level** structure should be a single letter (lowercase) corresponding to the first letter of the package name. This helps reduce the number of items in a single folder and keeps the repository organized.
    - The **second level** should be the package name (lowercase).
    - The **third level** should be the package version.

@@ -9,11 +9,7 @@ order:          /03
 next_reading:   true
 ---
 
-A DAX library is a collection of DAX user-defined functions (UDFs) authored in TMDL format, along with metadata (such as library name, version, author, etc.) and optional files like a README or an icon.
-Development takes place in the [DaxLib GitHub repository](https://github.com/daxlib/daxlib/), where users can propose new libraries by submitting a pull request (PR).
-Once the pull request is approved, the library is automatically packaged as a ZIP file and published on [daxlib.org](https://daxlib.org/), making it available for browsing, installation, and use.
-
-You can follow these steps to add a new package to DAX Lib:
+For small libraries (a few functions), you can follow these steps to add a new package to DAX Lib:
 
 1. **Fork** the DAX Lib repository [https://github.com/daxlib/daxlib/fork](https://github.com/daxlib/daxlib/fork).
     
@@ -107,5 +103,5 @@ You can follow these steps to add a new package to DAX Lib:
 7. **Create a pull request** to publish the library on [daxlib.org](https://daxlib.org/)
 
     - Go [here](https://github.com/daxlib/daxlib/pull/new) to create a new pull request from your forked repository to the official DAX Lib repository.
-    - The pull request must be approved manually by DaxLib owners/maintainers.
+    - The pull request must be approved manually by DAX Lib owners/maintainers.
     - When the pull request is approved, the package is immediately published.

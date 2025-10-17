@@ -1,6 +1,6 @@
 ---
 layout:         page
-title:          Contribute to DAX Lib open-source libraries
+title:          Contribute to DAX Lib official libraries
 menu_title:     DAX Lib libraries
 published:      true
 date:           2025-10-17
@@ -9,8 +9,10 @@ order:          /05
 next_reading:   true
 ---
 
-**TO BE COMPLETED**
-To contribute to one of the DaxLib open-source libraries maintained by the DaxLib organization, follow these steps:
-1. Fork one of the dev-daxlib repos based corresponding to the library name.
-2. Apply the change, commit, and submit a Pull Request.
-3. Wait for review and approval.
+> This section is a work in progress and will be completed soon.
+
+To contribute to one of the official libraries maintained by the DAX Lib organization, follow these steps:
+
+1. Fork the repository for the library you want to contribute to. You can find all `dev-daxlib-*` repositories on [DAX Lib's GitHub page](https://github.com/orgs/daxlib/repositories).
+2. Make your changes, commit them, and submit a Pull Request.
+3. Wait for your contribution to be reviewed and approved.
