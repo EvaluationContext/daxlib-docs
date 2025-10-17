@@ -1,6 +1,6 @@
 ---
 layout:         page
-title:          Naming conventions
+title:          Naming Conventions
 published:      true
 date:           2025-09-20
 modified:       2025-09-30
@@ -19,9 +19,11 @@ When creating a new package for DAX Lib, it is important to follow specific conv
      - `Contoso.Conversion` - a library of conversion functions published by Contoso.
      - `Northwind.Math.Geometry` - a library of geometrical math functions published by Northwind.
 
-2. **Package Folder Name**
+2. **Package Folder Name** (⚠️ only for Small Libraries)
 
     - The folder name for your package should be in lowercase letters and use dots to separate different levels of hierarchy.
+      > **⚠️**
+      > This naming convention must be manually managed if you create a Small Library by forking the DAX Lib repository. If you create a Medium-Large Library with a dedicated GitHub repository, the folder name will be automatically generated when the package is published to DAX Lib.
       
       Example: for a package named `Contoso.Conversion`, the folder name should be:
 

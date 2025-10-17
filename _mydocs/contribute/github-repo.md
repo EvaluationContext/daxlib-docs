@@ -1,7 +1,7 @@
 ---
 layout:         page
 title:          Contribute Medium-Large Libraries to DAX Lib
-menu_title:     Medium-Large libraries
+menu_title:     Medium-Large Libraries
 published:      true
 date:           2025-10-17
 modified:       2025-10-17

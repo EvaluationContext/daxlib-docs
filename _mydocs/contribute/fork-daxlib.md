@@ -1,7 +1,7 @@
 ---
 layout:         page
 title:          Contribute Small Libraries to DAX Lib
-menu_title:     Small libraries
+menu_title:     Small Libraries
 published:      true
 date:           2025-10-17
 modified:       2025-10-17

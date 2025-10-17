@@ -9,7 +9,8 @@ order:          /05
 next_reading:   true
 ---
 
-**TODO**
-1) Fork one of the dev-daxlib repos based corresponding to the library name.
-2) Apply the change, commit, and submit a Pull Request.
-3) Wait for review and approval.
+**TO BE COMPLETED**
+To contribute to one of the DaxLib open-source libraries maintained by the DaxLib organization, follow these steps:
+1. Fork one of the dev-daxlib repos based corresponding to the library name.
+2. Apply the change, commit, and submit a Pull Request.
+3. Wait for review and approval.
