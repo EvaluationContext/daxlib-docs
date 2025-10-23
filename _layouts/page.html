@@ -14,3 +14,111 @@ layout: default
         {% include article.html %}
     </div>
 </div>
+
+<!-- Mermaid Diagrams -->
+{% raw %}
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    
+    // Detect dark/light mode from site's data attributes or system preference
+    function getMermaidTheme() {
+        // First check if site has explicitly set a theme
+        if (document.documentElement.hasAttribute('data-dark')) {
+            return 'dark';
+        }
+        if (document.documentElement.hasAttribute('data-light')) {
+            return 'default';
+        }
+        
+        // Fall back to system preference
+        const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        return isDark ? 'dark' : 'default';
+    }
+    
+    // Initialize Mermaid with color scheme aware config
+    function initMermaid() {
+        mermaid.initialize({ 
+            startOnLoad: false,
+            theme: getMermaidTheme(),
+            securityLevel: 'loose'
+        });
+    }
+    
+    // Render Mermaid diagrams
+    function renderMermaid() {
+        // Find all mermaid code blocks
+        const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid, pre.language-mermaid code');
+        
+        mermaidBlocks.forEach((block, index) => {
+            const pre = block.closest('pre');
+            const code = block.textContent;
+            
+            // Create a div for mermaid to render into
+            const mermaidDiv = document.createElement('div');
+            mermaidDiv.className = 'mermaid';
+            mermaidDiv.textContent = code;
+            // Store the original code before rendering
+            mermaidDiv.setAttribute('data-original-code', code);
+            
+            // Replace the pre block with the mermaid div
+            pre.replaceWith(mermaidDiv);
+        });
+        
+        // Now render all mermaid diagrams
+        mermaid.run();
+    }
+    
+    // Re-render all diagrams with new theme
+    function reRenderMermaid() {
+        // Get all rendered mermaid diagrams
+        const renderedDiagrams = document.querySelectorAll('.mermaid');
+        
+        renderedDiagrams.forEach(diagram => {
+            // Get the original code
+            const originalCode = diagram.getAttribute('data-original-code');
+            if (originalCode) {
+                // Reset the diagram content
+                diagram.removeAttribute('data-processed');
+                diagram.innerHTML = originalCode;
+            }
+        });
+        
+        // Re-initialize with new theme and render
+        initMermaid();
+        mermaid.run();
+    }
+    
+    // Initialize and render on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        initMermaid();
+        renderMermaid();
+        
+        // Watch for theme changes on the html element
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && 
+                    (mutation.attributeName === 'data-dark' || mutation.attributeName === 'data-light')) {
+                    reRenderMermaid();
+                }
+            });
+        });
+        
+        // Start observing
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-dark', 'data-light']
+        });
+        
+        // Also listen for system color scheme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+                // Only re-render if no explicit theme is set
+                if (!document.documentElement.hasAttribute('data-dark') && 
+                    !document.documentElement.hasAttribute('data-light')) {
+                    reRenderMermaid();
+                }
+            });
+        }
+    });
+</script>
+{% endraw %}
