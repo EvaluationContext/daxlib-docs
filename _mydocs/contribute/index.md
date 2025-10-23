@@ -64,7 +64,7 @@ The difference is that development of the library will occur on a fork of `daxli
 
 For in-depth steps follow the [Contribute Medium-Large Libraries to DAX Lib](github-repo.md) guide.
 
-### Medium/Large Workflow
+### Medium/Large Library Workflow
 
 ```mermaid
 sequenceDiagram
@@ -81,7 +81,7 @@ sequenceDiagram
     Main->>DaxLib: 6. Package deployed
 ```
 
-### Medium/Large Structure
+### Medium/Large Library Structure
 
 `daxlib/lib-quickstart-template` has the following structure. The the structure is slightly different from the Small library, but the required content remain the same, except your library now lives in the `src` folder.
 
