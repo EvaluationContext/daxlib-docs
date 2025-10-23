@@ -46,11 +46,14 @@ sequenceDiagram
     ├── 📁 ...
     ├── 📁 y
     │    └── 📁 your.library
-    │         ├── 📁 lib
-    │         │    └── functions.tmdl   // Required - Your DAX UDF functions 
-    │         ├── 📄 icon.png           // Optional - Icon for your library
-    │         ├── 📄 README.md          // Optional - Docs for your library
-    │         └── 📄 manifest.daxlib    // Required - Declares package properties
+    │         ├── 📁 0.1.0
+    │         └── 📁 0.1.1
+    │              ├── 📁 lib
+    │              │    └── functions.tmdl   // Required - Your DAX UDF functions 
+    │              ├── 📄 icon.png           // Optional - Icon for your library
+    │              ├── 📄 README.md          // Optional - Docs for your library
+    │              └── 📄 manifest.daxlib    // Required - Declares package properties
+    ├── 📁 ...
     └── 📁 z
 ```
 
