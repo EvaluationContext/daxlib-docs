@@ -36,9 +36,10 @@ Here is a list of third-party components used by the DAX Lib website:
 - [Radix UI](https://www.radix-ui.com/)
 - [React](https://reactjs.org/)
 - [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton)
+- [React Router DOM](https://reactrouter.com/en/main)
+- [React Select](https://react-select.com/)
 - [html-react-parser](https://github.com/remarkablemark/html-react-parser)
 - [react-error-boundary](https://github.com/bvaughn/react-error-boundary)
-- [React Router DOM](https://reactrouter.com/en/main)
 - [SWR](https://swr.vercel.app/)
 
 ### Components under the BSD 3-Clause License
