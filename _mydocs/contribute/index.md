@@ -9,19 +9,30 @@ order:          /02
 next_reading:   true
 ---
 
-A DAX library is a collection of DAX user-defined functions (UDFs) written in TMDL format. This is accompanied with `manifest.daxlib`, which include metadata, such as the library name, version, and author. The library can also include a `README.md` and/or `icon.png`, but these are optional.
+A DAX library is a collection of DAX user-defined functions (UDFs) written in TMDL format. 
 
-Users can contribute a library via a pull request (PR) to `daxlib/daxlib`. Once approved, the library is published on daxlib.org, making it available for browsing, installation, and use.
+A DAX lib library is comprised of:
+
+- `manifest.daxlib`: metadata, such as the library name, version, and author
+- `functions.tmdl`: DAX UDF functions
+
+It can also include optional files, such as `README.md` and/or `icon.png`.
+
+> Follow the [naming conventions](naming-conventions.md) for both the folder structure, library and function names
+
+Users can contribute a library via a pull request (PR) to `daxlib/daxlib`. Once approved, the library is published on [daxlib.org](https://daxlib.org/), making it available for browsing, installation, and use.
+
+## Types of Libraries
 
 Depending on your DAX library's size and complexity, you can choose one of the following methods to contribute it to DAX Lib:
 
-## Small Library
+### Small Library
 
 In this mode you develop your library on a personal fork of `daxlib/daxlib` (`<youraccount>/daxlib`), then submit a PR to `daxlib/daxlib` to submit your library, and your library will be released on daxlib.org. 
 
 For in-depth steps follow the [Contribute Small Libraries to DAX Lib](fork-daxlib.md) guide.
 
-### Small Library Workflow
+#### Small Library Workflow
 
 ```mermaid
 sequenceDiagram
@@ -36,7 +47,7 @@ sequenceDiagram
     Main->>DaxLib: 5. Package deployed
 ```
 
-### Small Library Structure
+#### Small Library Structure
 
 `daxlib/daxlib` has the structure below. You can add your library under `packages/<firstletterofyouraccountname>`.
 
@@ -57,7 +68,7 @@ sequenceDiagram
     └── 📁 z
 ```
 
-## Medium/Large Library
+### Medium/Large Library
 
 The process for Medium/Large libraries uses a extended workflow.
 
@@ -67,7 +78,7 @@ The difference is that development of the library will occur on a fork of `daxli
 
 For in-depth steps follow the [Contribute Medium-Large Libraries to DAX Lib](github-repo.md) guide.
 
-### Medium/Large Library Workflow
+#### Medium/Large Library Workflow
 
 ```mermaid
 sequenceDiagram
@@ -84,7 +95,7 @@ sequenceDiagram
     Main->>DaxLib: 6. Package deployed
 ```
 
-### Medium/Large Library Structure
+#### Medium/Large Library Structure
 
 `daxlib/lib-quickstart-template` has the following structure. The the structure is slightly different from the Small library, but the required content remain the same, except your library now lives in the `src` folder.
 
@@ -100,7 +111,7 @@ sequenceDiagram
         └── 📄 manifest.daxlib          // Required - Declares package properties
 ```
 
-### Why Create a Medium/large Library?
+#### Why Create a Medium/large Library?
 
 Since you have a specific repo dedicated to your library you are able to:
 
@@ -108,6 +119,6 @@ Since you have a specific repo dedicated to your library you are able to:
 - Collaborate with others to develop the library
 - Add documentation site and host (for example) on GitHub Pages
 
-## DAX Lib official libraries
+### DAX Lib official libraries
 
 For in-depth steps follow the [Contribute to DAX Lib official libraries](daxlib-libraries.md) guide.

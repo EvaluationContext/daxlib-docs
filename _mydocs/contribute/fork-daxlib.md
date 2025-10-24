@@ -67,11 +67,13 @@ DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md
 }
 ```
 
-> refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties. You can also refer to the example [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package.
+> **manifest.daxlib Schema**
+> 
+> Refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties. You can also refer to the example [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package.
 
 ### lib/functions.tmdl
 
-*Required:* Contains TMDL definition of the functions within your library.
+*Required:* Contains TMDL definition of the functions within your library. TMDL script must *not* have `CreateOrReplace` keyword.
 
 ```dax
 /// Convert from Celsius(°C) to Fahrenheit(°F)
@@ -80,8 +82,8 @@ DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md
 FUNCTION CelsiusToFahrenheit = ( temperature: DOUBLE ) =>
         ( temperature * ( 9 / 5 ) ) + 32
 
-  annotation DAXLIB_PackageId = <youraccount>/<yourlibrary>
-  annotation DAXLIB_PackageVersion = x.x.x
+  annotation DAXLIB_PackageId = Contoso.Conversion
+  annotation DAXLIB_PackageVersion = 0.1.0
 ...
 ```
 
@@ -94,8 +96,6 @@ FUNCTION CelsiusToFahrenheit = ( temperature: DOUBLE ) =>
 
 > **Annotations**
 > 
-> TDML script must *not* have `CreateOrReplace` keyword
->
 > Functions must have the following annotations:
 > 
 > ```tmdl
@@ -114,17 +114,11 @@ FUNCTION CelsiusToFahrenheit = ( temperature: DOUBLE ) =>
     
 *Optional:* Markdown docs file, with general information about the library, usage instructions, examples, and any notes for users
 
-> The file must be in Markdown format (.MD), with a maximum size of 100 KB
->
-> For security reasons, only a limited set of Markdown features are supported, and external links may be restricted to trusted domains
+> The file must be in Markdown format (.MD), with a maximum size of 100 KB. For security reasons, only a limited set of Markdown features are supported, and external links may be restricted to trusted domains
 
 ## Submitting Library to DAX Lib
 
-Create a pull request from your fork (`<youraccount>/daxlib`) to `daxlib/daxlib` to publish the library on [daxlib.org](https://daxlib.org/)
-
-- Go [here](https://github.com/daxlib/daxlib/pull/new) to create a new pull request from your forked repository to the official DAX Lib repository
-- The pull request must be approved manually by DAX Lib owners/maintainers
-- After approval your library will appear on [DAX Lib](https://daxlib.org/) for other to download and use
+Create a pull request from your fork (`<youraccount>/daxlib`) to `daxlib/daxlib` to publish the library on [daxlib.org](https://daxlib.org/). The pull request must be approved manually by DAX Lib owners/maintainers. After approval your library will appear on [DAX Lib](https://daxlib.org/) for other to download and use
 
 > **Packages are immutable**
 >
