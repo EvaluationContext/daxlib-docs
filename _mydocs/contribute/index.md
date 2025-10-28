@@ -4,7 +4,7 @@ title:          Contribute to DAX Lib
 menu_title:     Contribute
 published:      true
 date:           2025-08-14
-modified:       2025-10-23
+modified:       2025-10-28
 order:          /02
 next_reading:   true
 ---
@@ -51,22 +51,29 @@ sequenceDiagram
 
 `daxlib/daxlib` has the structure below. You can add your library under `packages/<firstletterofyouraccountname>`.
 
-```txt
-└── 📁 packages
-    |── 📁 a   
-    ├── 📁 ...
-    ├── 📁 y
-    │    └── 📁 your.library
-    │         ├── 📁 0.1.0
-    │         └── 📁 0.1.1
-    │              ├── 📁 lib
-    │              │    └── functions.tmdl   // Required - Your DAX UDF functions 
-    │              ├── 📄 icon.png           // Optional - Icon for your library
-    │              ├── 📄 README.md          // Optional - Docs for your library
-    │              └── 📄 manifest.daxlib    // Required - Declares package properties
-    ├── 📁 ...
-    └── 📁 z
+```bash
+.
+└── packages/
+    ├── a/
+    ├── .../
+    ├── y/
+    │   └── your.library/
+    │       ├── 0.1.0/
+    │       └── 0.1.1/
+    │           ├── lib/
+    │           │   └── functions.tmdl   # Required - Your DAX UDF functions
+    │           ├── icon.png             # Optional - Icon for your library
+    │           ├── README.md            # Optional - Docs for your library
+    │           └── manifest.daxlib      # Required - Declares package properties
+    ├── .../
+    └── z/
 ```
+
+We s#till need a fork of `daxlib/daxlib` (`<youraccount>/daxlib`), and will still submit a pull request to `daxlib/daxlib` to publish a library.
+
+The difference is that development of the library will occur on a fork of `daxlib/lib-quickstart-template` (`<youraccount>/<yourlibrary>`). A github workflow can be run on `<youraccount>/<yourlibrary>`, which will push the library to a new, version specific, branch of `<youraccount>/daxlib`, which can then be submitted via a pull request to `daxlib/daxlib`.
+
+For in-depth steps follow the [Contribute Medium-Large Libraries to DAX Lib](github-repo.md) guide.
 
 ### Medium/Large Library
 
@@ -99,16 +106,17 @@ sequenceDiagram
 
 `daxlib/lib-quickstart-template` has the following structure. The the structure is slightly different from the Small library, but the required content remain the same, except your library now lives in the `src` folder.
 
-```txt
-├── 📁 .github
-│    └── 📁 workflows
-│         └── 📄 publish-package.yml   // Workflow to create branch on `<youraccount>/daxlib` with your library version
-└── 📁 src
-        ├── 📁 lib
-        │    └── functions.tmdl         // Required - Your DAX UDF functions
-        ├── 📄 icon.png                 // Optional - Icon for your library
-        ├── 📄 README.md                // Optional - Docs for your library
-        └── 📄 manifest.daxlib          // Required - Declares package properties
+```bash
+.
+├── .github/
+│   └── workflows/
+│       └── publish-package.yml   # Workflow to create branch on `<youraccount>/daxlib` with your library version
+└── src/
+    ├── lib/
+    │   └── functions.tmdl        # Required - Your DAX UDF functions
+    ├── icon.png                  # Optional - Icon for your library
+    ├── README.md                 # Optional - Docs for your library
+    └── manifest.daxlib           # Required - Declares package properties
 ```
 
 #### Why Create a Medium/large Library?
@@ -117,7 +125,7 @@ Since you have a specific repo dedicated to your library you are able to:
 
 - Connect with your users with GitHub issues
 - Collaborate with others to develop the library
-- Add documentation site and host (for example) on GitHub Pages
+- Add [documentation site](docs-site.md) and host (for example) on GitHub Pages
 
 ### DAX Lib official libraries
 

@@ -4,7 +4,7 @@ title:          Contribute Medium-Large Libraries to DAX Lib
 menu_title:     Medium-Large Libraries
 published:      true
 date:           2025-10-17
-modified:       2025-10-24
+modified:       2025-10-28
 order:          /04
 next_reading:   true
 ---
@@ -17,11 +17,7 @@ Create `daxlib/lib-quickstart-template Template` Template:
 
 <a href="https://github.com/new?template_name=lib-quickstart-template&template_owner=daxlib" class="button" target="_blank">Use daxlib/lib-quickstart-template Template</a>
     
-This creates a personal copy of the repository in your GitHub account. This repo will be dedicated to your library, and should be named after your library (i.e `Contoso/Contoso.Conversion`). If you want to have more than one Medium-Large library, simply create another repo from the template.
-
-> **Library Name**
-> 
-> Follow the [naming conventions](naming-conventions.md) for the library name
+This creates a personal copy of the repository in your GitHub account. This repo will be dedicated to your library, and should be named after your library (i.e `Contoso/Contoso.Conversion`). If you want to have more than one Medium-Large library, simply create another repo from the template. Follow the [naming conventions](naming-conventions.md) for the library name.
 
 > Just like with Small libraries you will also need a fork of `daxlib/daxlib` (i.e `Contoso/daxlib`). This will be used to generate the pull request to `daxlib/daxlib`.
 
@@ -29,17 +25,18 @@ This creates a personal copy of the repository in your GitHub account. This repo
 
 DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md` and `icon.png` can be optionally included. These are included in the `src` folder.
 
-```txt
-├── 📁 .github
-│    └── 📁 workflows
-│         └── 📄 publish-package.yml   // Workflow to create branch on `contoso/daxlib` with your library version
-└── 📁 src
-│        ├── 📁 lib
-│        │    └── functions.tmdl         // Required - Your DAX UDF functions
-│        ├── 📄 icon.png                // Optional - Icon for your library
-│        ├── 📄 README.md               // Optional - Docs for your library
-│        └── 📄 manifest.daxlib         // Required - Declares package properties
-└── 📄 README.md                        // Optional - Info on your library
+```bash
+.
+├── .github/
+│   └── workflows/
+│       └── publish-package.yml   # Workflow to create branch on `contoso/daxlib` with your library version
+├── src/
+│   ├── lib/
+│   │   └── functions.tmdl        # Required - Your DAX UDF functions
+│   ├── icon.png                  # Optional - Icon for your library
+│   ├── README.md                 # Optional - Docs for your library
+│   └── manifest.daxlib           # Required - Declares package properties
+└── README.md                     # Optional - Info on your library
 ```
 
 > You can update the `README.md` at the root of the library to give user who visit your `daxlib/lib-quickstart-template Template` fork information about the library, how to contribute or how to sumbit issues
@@ -56,17 +53,14 @@ DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md
     "authors": "Contoso",
     "description": "My amazing library",
     "tags": "DAX,UDF",
-    "releaseNotes": "🚀",   // optional
+    "releaseNotes": "New functions",   // optional
     "projectUrl": "https://contoso.github.io/contoso.conversion/", // optional Docs site
     "repositoryUrl": "https://github.com/sql-bi/daxlib/tree/main/packages/c/contoso.conversion",
     "icon": "/icon.png",    // optional
     "readme": "/README.md"  // optional
 }
 ```
-
-> **manifest.daxlib Schema**
-> 
-> Refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties. You can also refer to the example [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package.
+Refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties. You can also refer to the example [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package.
 
 ### lib/functions.tmdl
 
@@ -84,38 +78,33 @@ FUNCTION CelsiusToFahrenheit = ( temperature: DOUBLE ) =>
 ...
 ```
 
-> **Naming Convention**
-> 
-> There are some guidelines on DAX UDF naming conventions:
->
-> - [DAX Lib Naming Conventions](https://docs.daxlib.org/contribute/naming-conventions)
-> - [SQLBI DAX Naming Conventions](https://docs.sqlbi.com/dax-style/dax-naming-conventions)
+#### Naming Convention
 
-> **Annotations**
->
-> We are able to replace the annotation values in `functions.tmdl` with placeholders. These will be overwritten by the version specified in `manifest.daxlib` when running the `publish-package.yml` workflow.
-> 
-> ```tmdl
-> ```diff
->     - annotation DAXLIB_PackageId = <youraccount>/<yourlibrary>
->     + annotation DAXLIB_PackageId = __PLACEHOLDER_PACKAGE_ID__
-> 
->     - annotation DAXLIB_PackageVersion = x.x.x
->     + annotation DAXLIB_PackageVersion = __PLACEHOLDER_PACKAGE_VERSION__
-> ```
-> ```
+There are some guidelines on DAX UDF naming conventions:
+
+- [DAX Lib Naming Conventions](https://docs.daxlib.org/contribute/naming-conventions)
+- [SQLBI DAX Naming Conventions](https://docs.sqlbi.com/dax-style/dax-naming-conventions)
+
+#### Annotations
+
+We are able to replace the annotation values in `functions.tmdl` with placeholders. These will be overwritten by the version specified in `manifest.daxlib` when running the `publish-package.yml` workflow.
+
+```tmdl
+annotation DAXLIB_PackageId = __PLACEHOLDER_PACKAGE_ID_
+annotation DAXLIB_PackageVersion = __PLACEHOLDER_PACKAGE_VERSION__
+```
 
 ### icon.png
 
 *Optional:* icon for library
 
-> The icon file must be in PNG format (.PNG), with a maximum size of 100 KB
+The icon file must be in PNG format (.PNG), with a maximum size of 100 KB.
 
 ### README.md
     
 *Optional:* Markdown docs file, with general information about the library, usage instructions, examples, and any notes for users
 
-> The file must be in Markdown format (.MD), with a maximum size of 100 KB. For security reasons, only a limited set of Markdown features are supported, and external links may be restricted to trusted domains
+The file must be in Markdown format (.MD), with a maximum size of 100 KB. For security reasons, only a limited set of Markdown features are supported, and external links may be restricted to trusted domains.
 
 ## Publish Your Library
 

@@ -4,7 +4,7 @@ title:          Contribute Small Libraries to DAX Lib
 menu_title:     Small Libraries
 published:      true
 date:           2025-10-17
-modified:       2025-10-23
+modified:       2025-10-28
 order:          /03
 next_reading:   true
 ---
@@ -29,23 +29,23 @@ Create a folder for your package in `/packages/`, following the [naming conventi
 
 DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md` and `icon.png` can be optionally included.
 
-```txt
-└── 📁 packages
-    |── 📁 a   
-    ├── 📁 ...
-    ├── 📁 c
-    │    └── 📁 contoso.conversion
-    │         └── 📁 1.0.0  
-    │              ├── 📁 lib
-    │              │    └── functions.tmdl   // Required - Your DAX UDF functions 
-    │              ├── 📄 icon.png           // Optional - Icon for your library
-    │              ├── 📄 README.md          // Optional - Docs for your library
-    │              └── 📄 manifest.daxlib    // Required - Declares package properties
-    ├── 📁 ...
-    └── 📁 z
+```bash
+packages/
+├── a/
+├── .../
+├── c/
+│   └── contoso.conversion/
+│       └── 1.0.0/
+│           ├── lib/
+│           │   └── functions.tmdl   # Required - Your DAX UDF functions
+│           ├── icon.png             # Optional - Icon for your library
+│           ├── README.md            # Optional - Docs for your library
+│           └── manifest.daxlib      # Required - Declares package properties
+├── .../
+└── z/
 ```
 
-> You can use the [DaxLib.Sample](https://github.com/daxlib/daxlib/tree/main/packages/d/daxlib.sample/0.1.6) package as a starting point: copy it, rename it according to your library’s name, and then update its contents to match your library.
+> You can use the [DaxLib.Sample](https://github.com/daxlib/daxlib/tree/main/packages/d/daxlib.sample/0.1.6) package as a starting point: copy it, rename it according to your library's name, and then update its contents to match your library.
 
 ### manifest.daxlib
 
@@ -56,10 +56,10 @@ DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md
     "$schema": "https://raw.githubusercontent.com/sql-bi/daxlib/refs/heads/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json",
     "id": "Contoso.Conversion",
     "version": "1.0.0",
-    "authors": "contoso",
+    "authors": "Contoso",
     "description": "My amazing library",
     "tags": "DAX,UDF",
-    "releaseNotes": "🚀",   // optional
+    "releaseNotes": "New functions",   // optional
     "projectUrl": "https://contoso.github.io/contoso.conversion/", // optional
     "repositoryUrl": "https://github.com/sql-bi/daxlib/tree/main/packages/c/contoso.conversion",
     "icon": "/icon.png",    // optional
@@ -67,9 +67,7 @@ DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md
 }
 ```
 
-> **manifest.daxlib Schema**
-> 
-> Refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties. You can also refer to the example [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package.
+Refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties. You can also refer to the example [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package.
 
 ### lib/functions.tmdl
 
@@ -87,34 +85,33 @@ FUNCTION CelsiusToFahrenheit = ( temperature: DOUBLE ) =>
 ...
 ```
 
-> **Naming Convention**
-> 
-> There are some guidelines on DAX UDF naming conventions:
->
-> - [DAX Lib Naming Conventions](https://docs.daxlib.org/contribute/naming-conventions)
-> - [SQLBI DAX Naming Conventions](https://docs.sqlbi.com/dax-style/dax-naming-conventions)
+#### Naming Convention
 
-> **Annotations**
-> 
-> Functions must have the following annotations:
-> 
-> ```tmdl
-> annotation DAXLIB_PackageId = <youraccount>/<yourlibrary>
-> annotation DAXLIB_PackageVersion = x.x.x
-> ```
->
+There are some guidelines on DAX UDF naming conventions:
+
+- [DAX Lib Naming Conventions](https://docs.daxlib.org/contribute/naming-conventions)
+- [SQLBI DAX Naming Conventions](https://docs.sqlbi.com/dax-style/dax-naming-conventions)
+
+#### Annotations
+
+Functions must have the following annotations:
+
+```tmdl
+annotation DAXLIB_PackageId = <youraccount>/<yourlibrary>
+annotation DAXLIB_PackageVersion = x.x.x
+```
 
 ### icon.png
 
 *Optional:* icon for library
 
-> The icon file must be in PNG format (.PNG), with a maximum size of 100 KB
+The icon file must be in PNG format (.PNG), with a maximum size of 100 KB.
 
 ### README.md
     
 *Optional:* Markdown docs file, with general information about the library, usage instructions, examples, and any notes for users
 
-> The file must be in Markdown format (.MD), with a maximum size of 100 KB. For security reasons, only a limited set of Markdown features are supported, and external links may be restricted to trusted domains
+The file must be in Markdown format (.MD), with a maximum size of 100 KB. For security reasons, only a limited set of Markdown features are supported, and external links may be restricted to trusted domains.
 
 ## Submitting Library to DAX Lib
 
