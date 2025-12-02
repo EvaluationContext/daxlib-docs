@@ -4,91 +4,134 @@ title:          Contribute Medium-Large Libraries to DAX Lib
 menu_title:     Medium-Large Libraries
 published:      true
 date:           2025-10-17
-modified:       2025-10-17
+modified:       2025-10-28
 order:          /04
 next_reading:   true
 ---
 
-> This section is a work in progress and will be completed soon.
+When your library starts to grow you might want to connect with your users with GitHub issues, collaborate with others to develop the library or Add documentation site and host (for example) on GitHub Pages. **Medium-Large** libraries allow you to have a repo dedicated to your library to do just this. Let see how to set one up.
 
-You don’t have to create a repository for your DAX library on daxlib.org, but it’s a smart move if you expect the library to grow. A GitHub repo helps you track issues, accept contributions, and manage changes easily.
+## Create daxlib/lib-quickstart-template Template Template
 
-To create a GitHub repository for your DAX library, ensure you have a GitHub account; if not, create one. Then, follow the instructions at [https://github.com/daxlib/lib-quickstart-template](https://github.com/daxlib/lib-quickstart-template)
+Create `daxlib/lib-quickstart-template Template` Template:
 
-You can follow these steps to add a new package to DAX Lib:
-
-1. **Create a name** for your package following the [naming conventions](naming-conventions.md) for both the name of the library and the package.
-
-2. **Create the manifest** in `manifest.daxlib` file.
+<a href="https://github.com/new?template_name=lib-quickstart-template&template_owner=daxlib" class="button" target="_blank">Use daxlib/lib-quickstart-template Template</a>
     
-    The `manifest.daxlib` is a mandatory file contains the package properties in JSON format. You can see the [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package for an example and refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties.
+This creates a personal copy of the repository in your GitHub account. This repo will be dedicated to your library, and should be named after your library (i.e `Contoso/Contoso.Conversion`). If you want to have more than one Medium-Large library, simply create another repo from the template. Follow the [naming conventions](naming-conventions.md) for the library name.
 
-    The manifest file should be located in the root folder of the library:
+> Just like with Small libraries you will also need a fork of `daxlib/daxlib` (i.e `Contoso/daxlib`). This will be used to generate the pull request to `daxlib/daxlib`.
 
-    ```bash
-    /manifest.daxlib
-    ```
+## Add your library
 
-3. **Create the DAX user-defined functions** in `lib/functions.tmdl` and follow the [naming conventions](naming-conventions.md) for the function names.
+DAX lib expects a `manifest.daxlib` and `lib/functions.tmdl` files. A `README.md` and `icon.png` can be optionally included. These are included in the `src` folder.
 
-    The file `lib/functions.tmdl` is a mandatory file and contains the source code of the DAX user-defined functions using the TMDL syntax. For an example, see the [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package.
+```bash
+.
+├── .github/
+│   └── workflows/
+│       └── publish-package.yml   # Workflow to create branch on `contoso/daxlib` with your library version
+├── src/
+│   ├── lib/
+│   │   └── functions.tmdl        # Required - Your DAX UDF functions
+│   ├── icon.png                  # Optional - Icon for your library
+│   ├── README.md                 # Optional - Docs for your library
+│   └── manifest.daxlib           # Required - Declares package properties
+└── README.md                     # Optional - Info on your library
+```
+
+> You can update the `README.md` at the root of the library to give user who visit your `daxlib/lib-quickstart-template Template` fork information about the library, how to contribute or how to sumbit issues
+
+### manifest.daxlib
+
+*Required:* The package properties in JSON format.
+
+``` json
+{
+    "$schema": "https://raw.githubusercontent.com/sql-bi/daxlib/refs/heads/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json",
+    "id": "Contoso.Conversion",
+    "version": "0.1.0",
+    "authors": "Contoso",
+    "description": "My amazing library",
+    "tags": "DAX,UDF",
+    "releaseNotes": "New functions",   // optional
+    "projectUrl": "https://contoso.github.io/contoso.conversion/", // optional Docs site
+    "repositoryUrl": "https://github.com/sql-bi/daxlib/tree/main/packages/c/contoso.conversion",
+    "icon": "/icon.png",    // optional
+    "readme": "/README.md"  // optional
+}
+```
+Refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/manifest/1.0.0/manifest.1.0.0.schema.json) for the complete specification of available properties. You can also refer to the example [DaxLib.Sample](https://daxlib.org/package/DaxLib.Sample/#code) package.
+
+### lib/functions.tmdl
+
+*Required:* Contains TMDL definition of the functions within your library. TMDL script must *not* have `CreateOrReplace` keyword.
+
+```dax
+/// Convert from Celsius(°C) to Fahrenheit(°F)
+/// @param {decimal} temperature - The temperature in Celsius
+/// @returns The temperature converted to Fahrenheit
+FUNCTION CelsiusToFahrenheit = ( temperature: DOUBLE ) =>
+        ( temperature * ( 9 / 5 ) ) + 32
+
+  annotation DAXLIB_PackageId = Contoso.Conversion
+  annotation DAXLIB_PackageVersion = 0.1.0
+...
+```
+
+#### Naming Convention
+
+There are some guidelines on DAX UDF naming conventions:
+
+- [DAX Lib Naming Conventions](https://docs.daxlib.org/contribute/naming-conventions)
+- [SQLBI DAX Naming Conventions](https://docs.sqlbi.com/dax-style/dax-naming-conventions)
+
+#### Annotations
+
+We are able to replace the annotation values in `functions.tmdl` with placeholders. These will be overwritten by the version specified in `manifest.daxlib` when running the `publish-package.yml` workflow.
+
+```tmdl
+annotation DAXLIB_PackageId = __PLACEHOLDER_PACKAGE_ID_
+annotation DAXLIB_PackageVersion = __PLACEHOLDER_PACKAGE_VERSION__
+```
+
+### icon.png
+
+*Optional:* icon for library
+
+The icon file must be in PNG format (.PNG), with a maximum size of 100 KB.
+
+### README.md
     
-    **Remarks**:
-    - The `functions.tmdl` file should contain only the function definitions without the `createOrReplace` command.
-    - Optional: add comments describing the function and its parameters to improve readability and usability, as suggested in the [DAX naming convention](https://docs.sqlbi.com/dax-style/dax-naming-conventions#comments).
-    - Each UDF must include the mandatory annotations: `DAXLIB_PackageId` and `DAXLIB_PackageVersion`.
+*Optional:* Markdown docs file, with general information about the library, usage instructions, examples, and any notes for users
 
-        Example: for a library named `Contoso.Conversion` with version `1.0.0` the annotations should be:
-        
-        ``` text
-        annotation DAXLIB_PackageId = Contoso.Conversion
-        annotation DAXLIB_PackageVersion = 1.0.0
-        ```
+The file must be in Markdown format (.MD), with a maximum size of 100 KB. For security reasons, only a limited set of Markdown features are supported, and external links may be restricted to trusted domains.
 
-4. **(Optional) Add a custom icon for your library**
+## Publish Your Library
 
-    You can include a custom icon for your library by adding a PNG file inside the library's folder. 
-    
-    **Remarks**:
-    - The icon file must be in PNG format (`.PNG`), with a maximum size of 100 KB.
-    - Place the icon file at:
+We first need to create a Personal Access Token, granting `read/write` permissions on `contoso/daxlib`.
 
-    ```bash
-    /icon.png
-    ```
+![Generate PAT Token](images/generate-pat-token.png)
 
-    If you include a library icon, you must also update the `manifest.daxlib` to specify the file path.
+We add the token as a secret on `Contoso/Contoso.Conversion`, granting these permission to `Contoso/daxlib`. So that the workflow run from `Contoso/Contoso.Conversion` can create a new branch in `Contoso/daxlib`.
 
-    ```json
-    {
-      // ...other manifest properties...
-      "icon": "/icon.png"
-    }
-    ```
+![Add Secret](images/add-secret.png)
 
-5. **(Optional) Add a README file**
+Navigate to `actions`, select `publish-package` and `Run workflow`. 
 
-    You can include a README file to provide documentation for your library. It can include general information about the library, usage instructions, examples, and any notes for users.
-    
-    **Remarks**:
-    - The file must be in Markdown format (`.MD`), with a maximum size of 100 KB.
-    - For security reasons, only a limited set of Markdown features are supported, and external links may be restricted to trusted domains.
+![publish-package](images/publish-package.png)
 
-    Place the README file at:
+Once complete, open completed `publish-package` job run, and select the `Open Pull Request`, to open the Pull request Window. 
 
-    ```bash
-    /README.md
-    ```
+![Completed publish-package job](images/publish-package-finished.png)
 
-    If you include a README file, you must also update the `manifest.daxlib` to specify the file path.
+Select `Create pull request` to create a pull request to `daxlib/daxlib`.
 
-    ```json
-    {
-      // ...other manifest properties...
-      "readme": "/README.md"
-    }
-    ```
+![Open Pull Request](images/open-pull-request.png)
 
-6. **Create a pull request** to publish the library on [daxlib.org](https://daxlib.org/) following the instruction at [https://github.com/daxlib/lib-quickstart-template](https://github.com/daxlib/lib-quickstart-template?tab=readme-ov-file#-publish-your-library).
-    - The pull request must be approved manually by DaxLib owners/maintainers.
-    - When the pull request is approved, the package is immediately published.
+The pull request will then be reviewed by the DAX Lib maintainers. If changes are requested during the review:
+
+- Apply the requested fixes to your code in the development repo (`Contoso/Contoso.Conversion`), and commit them to your repository
+- Re-run the `publish-package` workflow
+- The pull request will be automatically updated
+
+Once your pull request is approved and merged, your library will be automatically published on [daxlib.org](https://daxlib.org/).
