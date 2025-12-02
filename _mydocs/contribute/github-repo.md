@@ -68,7 +68,7 @@ Refer to the [JSON schema](https://github.com/daxlib/daxlib/blob/main/schemas/ma
 
 ```dax
 /// Convert from Celsius(°C) to Fahrenheit(°F)
-/// @param {decimal} temperature – The temperature in Celsius
+/// @param {decimal} temperature - The temperature in Celsius
 /// @returns The temperature converted to Fahrenheit
 FUNCTION CelsiusToFahrenheit = ( temperature: DOUBLE ) =>
         ( temperature * ( 9 / 5 ) ) + 32
@@ -110,23 +110,23 @@ The file must be in Markdown format (.MD), with a maximum size of 100 KB. For se
 
 We first need to create a Personal Access Token, granting `read/write` permissions on `contoso/daxlib`.
 
-![Generate PAT Token](/assets/images/Contribute/GeneratePATToken.png)
+![Generate PAT Token](images/generate-pat-token.png)
 
 We add the token as a secret on `Contoso/Contoso.Conversion`, granting these permission to `Contoso/daxlib`. So that the workflow run from `Contoso/Contoso.Conversion` can create a new branch in `Contoso/daxlib`.
 
-![Add Secret](/assets/images/Contribute/AddSecret.png)
+![Add Secret](images/add-secret.png)
 
 Navigate to `actions`, select `publish-package` and `Run workflow`. 
 
-![publish-package](/assets/images/Contribute/publish-package.png)
+![publish-package](images/publish-package.png)
 
 Once complete, open completed `publish-package` job run, and select the `Open Pull Request`, to open the Pull request Window. 
 
-![Completed publish-package job](/assets/images/Contribute/publish-packageFinished.png)
+![Completed publish-package job](images/publish-package-finished.png)
 
 Select `Create pull request` to create a pull request to `daxlib/daxlib`.
 
-![Open Pull Request](/assets/images/Contribute/OpenPullRequest.png)
+![Open Pull Request](images/open-pull-request.png)
 
 The pull request will then be reviewed by the DAX Lib maintainers. If changes are requested during the review:
 

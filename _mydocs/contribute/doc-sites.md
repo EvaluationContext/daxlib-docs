@@ -60,7 +60,7 @@ The `daxlib.svg` library uses **Material for MkDocs** to generate its documentat
 
 For a step-by-step guide on building a similar site, see this [blog post](https://evaluationcontext.github.io/posts/DaxLibContribute/#adding-a-docs-site).
 
-![daxlib.svg documentation site](/assets/images/Doc-Site/Doc-Site.png)
+![daxlib.svg documentation site](images/doc-site.png)
 
 ## Getting Started
 
