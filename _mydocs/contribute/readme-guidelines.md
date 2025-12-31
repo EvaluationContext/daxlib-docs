@@ -16,7 +16,7 @@ The  `README.md` file with your library will be displayed alongside your library
 - **Keep the structure simple and organized**. Use clear headings, bullet points, and logical sections for easy reading.
 - **External links** are permitted only if they are safe and trustworthy. All links will be verified using Google Safe Browsing (https://transparencyreport.google.com/safe-browsing/search).
 - **Do not** include images that **imitate**, replicate, or closely resemble **UI elements** from the DAX Lib website.
-- **Do not embed images** or assets as Base64. **Use standard URLs** to reference all media assets.
+- **Use publicly accessible and stable external URLs** for all media assets. Assets URLs must not point to images or assets included within the library package, as this is not supported. **Do not embed** images or assets as **Base64**. 
 - Image **aspect ratio must be preserved**. Prefer specifying only the `width` attribute so the height scales automatically.
 - **Large images** should be **optimized** to maintain reasonable performance.
 - **Do not wrap images in links**. Images must not be clickable or redirect users.
