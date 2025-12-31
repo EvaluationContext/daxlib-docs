@@ -11,6 +11,9 @@ next_reading:   true
 
 The  `README.md` file with your library will be displayed alongside your library on [daxlib.org](https://daxlib.org/). Its content must follow these guidelines to ensure consistency and to be approved for publication.
 
+- **Use professional language**. No profanity, offensive content, or inappropriate terminology.
+- **Be concise and relevant**. Include only information that helps users understand and use your library effectively.
+- **Keep the structure simple and organized**. Use clear headings, bullet points, and logical sections for easy reading.
 - **External links** are permitted only if they are safe and trustworthy. All links will be verified using Google Safe Browsing (https://transparencyreport.google.com/safe-browsing/search).
 - **Do not** include images that **imitate**, replicate, or closely resemble **UI elements** from the DAX Lib website.
 - **Do not embed images** or assets as Base64. **Use standard URLs** to reference all media assets.
