@@ -1,7 +1,7 @@
 ---
 layout:         page
-title:          Readme guidelines
-menu_title:     Readme guidelines
+title:          Readme Guidelines
+menu_title:     Readme Guidelines
 published:      true
 date:           2025-12-31
 modified:       2025-12-31
